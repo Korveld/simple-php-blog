@@ -1,0 +1,17 @@
+Options +SymLinksIfOwnerMatch
+RewriteEngine On
+
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^[^www\.].*$ [NC]
+RewriteRule ^reg?$ /reg.php
+RewriteRule ^auth?$ /auth.php
+RewriteRule ^article?$ /article.php
+RewriteRule ^news?$ /news.php
+RewriteRule ^contacts?$ /contacts.php
+
+ServerSignature Off
+AddDefaultCharset UTF-8
+
+ErrorDocument 404 /error.php
